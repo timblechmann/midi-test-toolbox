@@ -148,7 +148,7 @@ mod tests {
         let gen = Generator::new(
             Duration::from_millis(100),
             Duration::from_millis(100),
-            Sender::Function(|msg| println!("Sending {:#?}", msg)),
+            Sender::Function(|msg| println!("Sending {:?}", msg)),
             false,
             None,
         );

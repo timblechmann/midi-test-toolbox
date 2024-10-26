@@ -5,7 +5,7 @@ use wmidi::MidiMessage;
 fn echo_message(connection: &mut MidiOutputConnection, message: &[u8], print: bool) {
     if print {
         match MidiMessage::from_bytes(message) {
-            Ok(message) => println!("Received: {:#?}", message),
+            Ok(message) => println!("Received: {:?}", message),
             Err(error) => println!("Cannot decode midi message: {error}"),
         }
     }
