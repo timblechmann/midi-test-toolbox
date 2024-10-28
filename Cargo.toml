@@ -1,18 +1,23 @@
 [package]
-name = "midi-test-toolbox"
-version = "0.1.0"
+description = "Simple MIDI Test Tool"
 edition = "2021"
 license = "GPL-2.0-or-later"
+name = "midi-test-toolbox"
 repository = "https://github.com/timblechmann/midi-test-toolbox"
-description = "Simple MIDI Test Tool"
+version = "0.1.0"
 
 [dependencies]
-clap = { version = "4.5.20", features = ["derive", "color"] }
-fixedbitset = "0.5.7"
+clap = { version = "4.5.20", features = ["derive", "std"], default-features = false }
+fixedbitset = { default-features = false, version = "0.5.7" }
 heapless = "0.8.0"
 inline_colorization = "0.1.6"
-libc = "0.2.161"
+libc = { default-features = false, version = "0.2.161" }
 midir = "0.10.0"
 rand = "0.8.5"
-tokio = { version = "1.41.0", features = ["signal", "rt", "time", "sync", "macros"] }
+tokio = { version = "1.41.0", features = ["sync", "time", "rt", "signal"], default-features = false }
 wmidi = "4.0.10"
+
+[profile.release]
+codegen-units = 1
+lto = true
+# panic = "abort"
