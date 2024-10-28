@@ -133,7 +133,7 @@ mod tests {
         let gen = Generator::new(
             Duration::from_millis(100),
             Duration::from_millis(100),
-            Sender::Function(|msg| println!("Sending {:#?}", msg)),
+            Sender::Function(|msg| println!("Sending {:?}", msg)),
             false,
             None,
         );
@@ -153,9 +153,7 @@ mod tests {
             None,
         );
         assert_eq!(gen.available_notes().await.len(), 128);
-        println!("schedule note");
         gen.schedule_note().await;
-        println!("schedule note done");
         tokio::time::sleep(Duration::from_millis(1000)).await;
         assert_eq!(gen.available_notes().await.len(), 128);
     }
