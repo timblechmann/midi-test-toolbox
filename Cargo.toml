@@ -7,14 +7,14 @@ repository = "https://github.com/timblechmann/midi-test-toolbox"
 version = "0.1.0"
 
 [dependencies]
-clap = { version = "4.5.20", features = ["derive", "std"], default-features = false }
+clap = { version = "4.5.21", features = ["derive", "std", "help", "usage", "color"], default-features = false }
 fixedbitset = { default-features = false, version = "0.5.7" }
 heapless = "0.8.0"
 inline_colorization = "0.1.6"
-libc = { default-features = false, version = "0.2.161" }
+libc = { default-features = false, version = "0.2.166" }
 midir = "0.10.0"
 rand = "0.8.5"
-tokio = { version = "1.41.0", features = ["sync", "time", "rt", "signal"], default-features = false }
+tokio = { version = "1.41.1", features = ["sync", "time", "rt", "signal", "macros"], default-features = false }
 wmidi = "4.0.10"
 
 [profile.release]
