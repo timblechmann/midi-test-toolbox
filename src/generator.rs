@@ -3,7 +3,6 @@ use crate::utils;
 use crate::utils::Sender;
 use rand::prelude::SliceRandom;
 use rand::Rng;
-use std::io::Read;
 use std::ops::DerefMut;
 use std::sync::Arc;
 use std::time::Duration;
@@ -108,10 +107,9 @@ impl Generator {
         match sender.deref_mut() {
             Sender::Function(f) => f(&msg),
             Sender::Connection(c) => {
-                let mut data = heapless::Vec::<u8, 16>::new();
-                msg.bytes()
-                    .for_each(|byte| data.push(byte.unwrap()).unwrap());
+                let mut data = [0u8; 16];
 
+                msg.copy_to_slice(&mut data).unwrap();
                 c.send(&data).expect("Sending failed")
             }
         }
